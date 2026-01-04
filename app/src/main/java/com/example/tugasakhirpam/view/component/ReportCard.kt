@@ -1,5 +1,7 @@
 package com.example.tugasakhirpam.view.component
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -12,31 +14,32 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 @Composable
 fun ReportCard(
     title: String,
-    value: String
+    value: String,
+    backgroundColor: Color = Color(0xFF8B7D6B), // default coklat
+    textColor: Color = Color.White
 ) {
-    Card(
+    Box(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical = 6.dp),
-        shape = RoundedCornerShape(12.dp),
-        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+            .background(backgroundColor, RoundedCornerShape(12.dp))
+            .padding(16.dp)
     ) {
-        Column(
-            modifier = Modifier.padding(16.dp)
-        ) {
+        Column {
             Text(
                 text = title,
-                style = MaterialTheme.typography.bodyMedium
+                color = textColor,
+                style = MaterialTheme.typography.labelLarge
             )
-            Spacer(modifier = Modifier.height(4.dp))
             Text(
                 text = value,
-                style = MaterialTheme.typography.titleLarge
+                color = textColor,
+                style = MaterialTheme.typography.headlineSmall
             )
         }
     }

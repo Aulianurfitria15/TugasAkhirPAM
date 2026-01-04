@@ -10,6 +10,7 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -39,9 +40,23 @@ fun FilmCard(
             )
 
             Column(modifier = Modifier.padding(12.dp)) {
-                Text(film.title, fontWeight = FontWeight.Bold)
-                Text("Genre: ${film.genre}")
-                Text("Rating: ${film.rating}")
+                Text(
+                    film.title,
+                    fontWeight = FontWeight.Bold,
+                    color = Color.Black
+                )
+
+                Text(
+                    "Genre: ${film.genre}",
+                    color = Color.DarkGray
+                )
+
+                Text(
+                    "Rating: ${film.rating}",
+                    color = Color(0xFFB8484E), // 🔥 aksen merah
+                    fontWeight = FontWeight.SemiBold
+                )
+
             }
         }
     }
