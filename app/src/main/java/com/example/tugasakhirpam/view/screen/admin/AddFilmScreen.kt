@@ -22,6 +22,7 @@ import androidx.compose.material.icons.filled.Category
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Description
 import androidx.compose.material.icons.filled.Movie
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.filled.PhotoCamera
 import androidx.compose.material3.Button
@@ -124,6 +125,107 @@ fun AddFilmScreen(
         ) {
 
             // Section Upload Foto
+
+
+            OutlinedTextField(
+                value = title,
+                onValueChange = { title = it },
+                placeholder = { Text("Judul Film") },
+                leadingIcon = {
+                    Icon(Icons.Default.Movie, contentDescription = null)
+                },
+                modifier = Modifier.fillMaxWidth(),
+                colors = OutlinedTextFieldDefaults.colors(
+                    unfocusedContainerColor = Color.White,
+                    focusedContainerColor = Color.White
+                ),
+                shape = RoundedCornerShape(12.dp),
+                singleLine = true
+            )
+
+            OutlinedTextField(
+                value = genre,
+                onValueChange = { genre = it },
+                placeholder = { Text("Genre") },
+                leadingIcon = {
+                    Icon(
+                        Icons.Default.Category,
+                        contentDescription = null,
+                        tint = Color(0xFF4F5F59)
+                    )
+                },
+                modifier = Modifier.fillMaxWidth(),
+                colors = OutlinedTextFieldDefaults.colors(
+                    unfocusedContainerColor = Color.White,
+                    focusedContainerColor = Color.White,
+                    unfocusedBorderColor = Color.Transparent,
+                    focusedBorderColor = Color(0xFF4F5F59)
+                ),
+                shape = RoundedCornerShape(12.dp),
+                singleLine = true
+            )
+
+            OutlinedTextField(
+                value = year,
+                onValueChange = { year = it },
+                placeholder = { Text("Tahun") },
+                leadingIcon = {
+                    Icon(
+                        Icons.Default.DateRange,
+                        contentDescription = null,
+                        tint = Color(0xFF4F5F59)
+                    )
+                },
+                modifier = Modifier.fillMaxWidth(),
+                colors = OutlinedTextFieldDefaults.colors(
+                    unfocusedContainerColor = Color.White,
+                    focusedContainerColor = Color.White,
+                    unfocusedBorderColor = Color.Transparent,
+                    focusedBorderColor = Color(0xFF4F5F59)
+                ),
+                shape = RoundedCornerShape(12.dp),
+                singleLine = true
+            )
+
+            OutlinedTextField(
+                value = rating,
+                onValueChange = { rating = it },
+                placeholder = { Text("Rating") },
+                leadingIcon = {
+                    Icon(Icons.Default.Star, contentDescription = null, tint = Color(0xFF4F5F59))
+                },
+                modifier = Modifier.fillMaxWidth(),
+                colors = OutlinedTextFieldDefaults.colors(
+                    unfocusedContainerColor = Color.White,
+                    focusedContainerColor = Color.White,
+                    unfocusedBorderColor = Color.Transparent,
+                    focusedBorderColor = Color(0xFF4F5F59)
+                ),
+                shape = RoundedCornerShape(12.dp),
+                singleLine = true
+            )
+
+            OutlinedTextField(
+                value = description,
+                onValueChange = { description = it },
+                placeholder = { Text("Deskripsi") },
+                leadingIcon = {
+                    Icon(
+                        Icons.Default.Description,
+                        contentDescription = null,
+                        tint = Color(0xFF4F5F59)
+                    )
+                },
+                modifier = Modifier.fillMaxWidth(),
+                colors = OutlinedTextFieldDefaults.colors(
+                    unfocusedContainerColor = Color.White,
+                    focusedContainerColor = Color.White,
+                    unfocusedBorderColor = Color.Transparent,
+                    focusedBorderColor = Color(0xFF4F5F59)
+                ),
+                shape = RoundedCornerShape(12.dp),
+                singleLine = true
+            )
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -162,103 +264,6 @@ fun AddFilmScreen(
                     }
                 }
             }
-
-            OutlinedTextField(
-                value = title,
-                onValueChange = { title = it },
-                label = { Text("Judul Film") },
-                leadingIcon = {
-                    Icon(Icons.Default.Movie, contentDescription = null, tint = Color(0xFF4F5F59))
-                },
-                modifier = Modifier.fillMaxWidth(),
-                colors = OutlinedTextFieldDefaults.colors(
-                    unfocusedContainerColor = Color.White,
-                    focusedContainerColor = Color.White,
-                    unfocusedBorderColor = Color.Transparent,
-                    focusedBorderColor = Color(0xFF4F5F59)
-                ),
-                shape = RoundedCornerShape(50)
-            )
-
-            OutlinedTextField(
-                value = genre,
-                onValueChange = { genre = it },
-                label = { Text("Genre") },
-                leadingIcon = {
-                    Icon(
-                        Icons.Default.Category,
-                        contentDescription = null,
-                        tint = Color(0xFF4F5F59)
-                    )
-                },
-                modifier = Modifier.fillMaxWidth(),
-                colors = OutlinedTextFieldDefaults.colors(
-                    unfocusedContainerColor = Color.White,
-                    focusedContainerColor = Color.White,
-                    unfocusedBorderColor = Color.Transparent,
-                    focusedBorderColor = Color(0xFF4F5F59)
-                ),
-                shape = RoundedCornerShape(50)
-            )
-
-            OutlinedTextField(
-                value = year,
-                onValueChange = { year = it },
-                label = { Text("Tahun") },
-                leadingIcon = {
-                    Icon(
-                        Icons.Default.DateRange,
-                        contentDescription = null,
-                        tint = Color(0xFF4F5F59)
-                    )
-                },
-                modifier = Modifier.fillMaxWidth(),
-                colors = OutlinedTextFieldDefaults.colors(
-                    unfocusedContainerColor = Color.White,
-                    focusedContainerColor = Color.White,
-                    unfocusedBorderColor = Color.Transparent,
-                    focusedBorderColor = Color(0xFF4F5F59)
-                ),
-                shape = RoundedCornerShape(50)
-            )
-
-            OutlinedTextField(
-                value = rating,
-                onValueChange = { rating = it },
-                label = { Text("Rating") },
-                leadingIcon = {
-                    Icon(Icons.Default.Star, contentDescription = null, tint = Color(0xFF4F5F59))
-                },
-                modifier = Modifier.fillMaxWidth(),
-                colors = OutlinedTextFieldDefaults.colors(
-                    unfocusedContainerColor = Color.White,
-                    focusedContainerColor = Color.White,
-                    unfocusedBorderColor = Color.Transparent,
-                    focusedBorderColor = Color(0xFF4F5F59)
-                ),
-                shape = RoundedCornerShape(50)
-            )
-
-            OutlinedTextField(
-                value = description,
-                onValueChange = { description = it },
-                label = { Text("Deskripsi") },
-                leadingIcon = {
-                    Icon(
-                        Icons.Default.Description,
-                        contentDescription = null,
-                        tint = Color(0xFF4F5F59)
-                    )
-                },
-                modifier = Modifier.fillMaxWidth(),
-                colors = OutlinedTextFieldDefaults.colors(
-                    unfocusedContainerColor = Color.White,
-                    focusedContainerColor = Color.White,
-                    unfocusedBorderColor = Color.Transparent,
-                    focusedBorderColor = Color(0xFF4F5F59)
-                ),
-                shape = RoundedCornerShape(30)
-            )
 
             Spacer(modifier = Modifier.height(24.dp))
 
