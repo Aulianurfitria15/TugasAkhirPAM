@@ -1,5 +1,6 @@
 package com.example.tugasakhirpam.view.screen.user
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -11,12 +12,10 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
-import coil.request.ImageRequest
 import com.example.tugasakhirpam.view.component.AppTopBar
 import com.example.tugasakhirpam.viewmodel.FilmViewModel
 
@@ -30,7 +29,7 @@ fun UserFilmDetailScreen(
     val film by viewModel.getFilmById(filmId).collectAsState(initial = null)
 
     Scaffold(
-        containerColor = Color(0xFF4F5F59), // 🔥 background ijo konsisten
+        containerColor = Color(0xFF4F5F59),
         topBar = {
             AppTopBar(
                 title = "Detail Film",
@@ -47,20 +46,24 @@ fun UserFilmDetailScreen(
             ) {
 
                 // 🖼️ POSTER
-                AsyncImage(
-                    model = ImageRequest.Builder(LocalContext.current)
-                        .data(filmDetail.poster)
-                        .crossfade(true)
-                        .build(),
-                    contentDescription = filmDetail.title,
+                Box(
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(260.dp)
-                        .padding(bottom = 12.dp),
-                    contentScale = ContentScale.Crop
-                )
+                        .padding(bottom = 12.dp)
+                        .background(Color.LightGray, RoundedCornerShape(8.dp))
+                ) {
+                    AsyncImage(
+                        model = filmDetail.poster,
+                        contentDescription = filmDetail.title,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(260.dp),
+                        contentScale = ContentScale.Crop
+                    )
+                }
 
-                // 📦 CARD PUTIH
+                // ...existing code...
                 Card(
                     modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(16.dp),
