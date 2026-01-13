@@ -1,5 +1,6 @@
 package com.example.tugasakhirpam.view.screen.admin
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -16,12 +17,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
-import coil.request.ImageRequest
 import com.example.tugasakhirpam.viewmodel.FilmViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -31,32 +30,27 @@ fun FilmDetailScreen(
     filmId: Int,
     onBack: () -> Unit,
     onEditClick: (Int) -> Unit,
-    onDeleteConfirm: () -> Unit // Fungsi untuk dieksekusi setelah konfirmasi hapus
+    onDeleteConfirm: () -> Unit
 ) {
-    // Ambil detail film dari ViewModel
     val film by viewModel.getFilmById(filmId).collectAsState(initial = null)
     var showDeleteDialog by remember { mutableStateOf(false) }
 
-    // Jika state dialog true, tampilkan AlertDialog
     if (showDeleteDialog) {
         DeleteConfirmationDialog(
             onConfirm = {
-                // Sembunyikan dialog
                 showDeleteDialog = false
-                // HANYA jika film tidak null, lakukan delete
                 film?.let {
                     viewModel.deleteFilm(it)
-                    onDeleteConfirm() // Kembali ke layar sebelumnya
+                    onDeleteConfirm()
                 }
             },
             onDismiss = {
-                // Sembunyikan dialog jika pengguna batal
                 showDeleteDialog = false
             }
         )
     }
     Scaffold(
-        containerColor = Color(0xFF4F5F59), // 🔥 background hijau tema
+        containerColor = Color(0xFF4F5F59),
         topBar = {
             TopAppBar(
                 title = {
@@ -79,19 +73,19 @@ fun FilmDetailScreen(
                         Icon(
                             Icons.Default.Edit,
                             contentDescription = "Edit Film",
-                            tint = Color(0xFFB8484E) // merah
+                            tint = Color(0xFFB8484E)
                         )
                     }
                     IconButton(onClick = { showDeleteDialog = true }) {
                         Icon(
                             Icons.Default.Delete,
                             contentDescription = "Hapus Film",
-                            tint = Color(0xFFB8484E) // merah
+                            tint = Color(0xFFB8484E)
                         )
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color(0xFF4F5F59) // 🔥 hijau
+                    containerColor = Color(0xFF4F5F59)
                 )
             )
         }
@@ -106,20 +100,23 @@ fun FilmDetailScreen(
             ) {
 
                 // 🖼️ POSTER
-                AsyncImage(
-                    model = ImageRequest.Builder(LocalContext.current)
-                        .data(filmDetail.poster)
-                        .crossfade(true)
-                        .build(),
-                    contentDescription = filmDetail.title,
+                Box(
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(260.dp)
-                        .padding(bottom = 12.dp),
-                    contentScale = ContentScale.Crop
-                )
+                        .padding(bottom = 12.dp)
+                        .background(Color.LightGray, RoundedCornerShape(8.dp))
+                ) {
+                    AsyncImage(
+                        model = filmDetail.poster,
+                        contentDescription = filmDetail.title,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(260.dp),
+                        contentScale = ContentScale.Crop
+                    )
+                }
 
-                // 📦 CARD PUTIH (SAMA KAYA USER)
                 Card(
                     modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(16.dp),
