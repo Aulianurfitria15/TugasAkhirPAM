@@ -87,8 +87,11 @@ fun UserDashboardScreen(
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            LazyColumn {
-                items(films) { film ->
+            LazyColumn(modifier = Modifier.fillMaxWidth()) {
+                items(
+                    items = films,
+                    key = { film -> film.id }
+                ) { film ->
                     FilmCard(
                         film = film,
                         onClick = { onFilmClick(film.id) }
