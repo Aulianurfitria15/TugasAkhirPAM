@@ -1,4 +1,5 @@
 REGISTER:
+
 <img width="213" height="455" alt="image" src="https://github.com/user-attachments/assets/513bd758-1d40-47c4-bccd-6337888ea8f4" />
 
 LOGIN:
