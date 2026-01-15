@@ -30,4 +30,9 @@ object PenyediaViewModel {
         val db = MovieDatabase.getDatabase(context)
         return FilmRepository(db.filmDao())
     }
+
+    fun provideUserRepository(context: Context): UserRepository {
+        val db = MovieDatabase.getDatabase(context)
+        return UserRepository(db.userDao())
+    }
 }
