@@ -1,14 +1,17 @@
 package com.example.tugasakhirpam.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.tugasakhirpam.data.helper.InitialDataHelper
 import com.example.tugasakhirpam.view.screen.admin.AddFilmScreen
 import com.example.tugasakhirpam.view.screen.auth.LoginScreen
 import com.example.tugasakhirpam.view.screen.auth.RegisterScreen
@@ -21,6 +24,7 @@ import com.example.tugasakhirpam.view.screen.user.UserDashboardScreen
 import com.example.tugasakhirpam.view.screen.user.UserFilmDetailScreen
 import com.example.tugasakhirpam.viewmodel.FilmViewModel
 import com.example.tugasakhirpam.viewmodel.provider.PenyediaViewModel
+import kotlinx.coroutines.launch
 
 
 @Composable
@@ -29,6 +33,19 @@ fun AppNavigation() {
     val context = LocalContext.current
     val filmViewModel = PenyediaViewModel.provideFilmViewModel(context)
     val authViewModel = PenyediaViewModel.provideAuthViewModel(context)
+    val userRepository = PenyediaViewModel.provideUserRepository(context)
+    val coroutineScope = rememberCoroutineScope()
+
+    // Initialize admin user saat aplikasi pertama kali di-launch
+    LaunchedEffect(Unit) {
+        coroutineScope.launch {
+            try {
+                InitialDataHelper.initializeAdminUser(userRepository)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+    }
 
 
     NavHost(
