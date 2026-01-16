@@ -45,7 +45,7 @@ fun UserFilmDetailScreen(
                     .fillMaxSize()
             ) {
 
-                // 🖼️ POSTER
+                //POSTER
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -63,7 +63,7 @@ fun UserFilmDetailScreen(
                     )
                 }
 
-                // ...existing code...
+
                 Card(
                     modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(16.dp),
@@ -75,7 +75,7 @@ fun UserFilmDetailScreen(
                         verticalArrangement = Arrangement.spacedBy(8.dp)
                     ) {
 
-                        // 🔝 JUDUL + RATING
+                        //JUDUL + RATING
                         Row(
                             modifier = Modifier.fillMaxWidth(),
                             horizontalArrangement = Arrangement.SpaceBetween

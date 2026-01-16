@@ -9,5 +9,9 @@ data class User(
     val id: Int = 0,
     val username: String,
     val password: String,
-    val role: String // "admin" atau "user"
+    val role: String
 )
+
+//tabel user
+//untuk menyimpan data user (register dan login)
+//dan berisi kolom id, username, password, role

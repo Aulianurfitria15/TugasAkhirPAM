@@ -99,7 +99,7 @@ fun FilmDetailScreen(
                     .fillMaxSize()
             ) {
 
-                // 🖼️ POSTER
+                // POSTER
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -128,7 +128,7 @@ fun FilmDetailScreen(
                         verticalArrangement = Arrangement.spacedBy(8.dp)
                     ) {
 
-                        // 🔝 JUDUL + RATING
+                        // JUDUL + RATING
                         Row(
                             modifier = Modifier.fillMaxWidth(),
                             horizontalArrangement = Arrangement.SpaceBetween
@@ -177,7 +177,7 @@ fun FilmDetailScreen(
     }
 }
 
-        @Composable
+@Composable
 private fun DeleteConfirmationDialog(
     onConfirm: () -> Unit,
     onDismiss: () -> Unit

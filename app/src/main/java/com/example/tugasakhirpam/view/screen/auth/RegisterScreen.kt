@@ -53,7 +53,7 @@ fun RegisterScreen(
 
         Spacer(modifier = Modifier.height(64.dp))
 
-        // 🔺 LOGO
+        //LOGO (pake icon karna ga dapet logo aslinya)
         Icon(
             imageVector = Icons.Default.Movie,
             contentDescription = null,
@@ -77,7 +77,7 @@ fun RegisterScreen(
 
         Spacer(modifier = Modifier.height(48.dp))
 
-        // 🔹 USERNAME
+        //USERNAME
         OutlinedTextField(
             value = username,
             onValueChange = { username = it },
@@ -96,7 +96,7 @@ fun RegisterScreen(
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // 🔹 PASSWORD
+        //PASSWORD
         OutlinedTextField(
             value = password,
             onValueChange = { password = it },
@@ -116,7 +116,7 @@ fun RegisterScreen(
 
         Spacer(modifier = Modifier.height(32.dp))
 
-        // 🔴 BUTTON DAFTAR
+        //BUTTON DAFTAR
         Button(
             onClick = {
                 authViewModel.register(username, password, "user")
@@ -135,7 +135,7 @@ fun RegisterScreen(
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        // 🔸 LOGIN
+        //LOGIN
         Row {
             Text(
                 text = "Sudah punya akun? ",

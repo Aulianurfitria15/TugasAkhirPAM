@@ -10,9 +10,11 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface ReportDao {
 
+    //Menghitung jumlah total film
     @Query("SELECT COUNT(*) FROM film")
     fun getTotalFilm(): Flow<Int>
 
+    //Mengambil genre paling banyak
     @Query("""
         SELECT genre FROM film
         GROUP BY genre
@@ -21,9 +23,12 @@ interface ReportDao {
     """)
     fun getMostGenre(): Flow<String?>
 
+    //Mengambil rating tertinggi dari semua film
     @Query("SELECT MAX(rating) FROM film")
     fun getHighestRating(): Flow<Double?>
 
+    //Mengambil 3 genre teratas
+    //Menggunakan data class GenreCount
     @Query("""
     SELECT genre, COUNT(*) as total
     FROM film

@@ -27,6 +27,10 @@ import com.example.tugasakhirpam.viewmodel.provider.PenyediaViewModel
 import kotlinx.coroutines.launch
 
 
+//fungsi navigasi ini akan mengatur alur navigasi antar screen di dalam aplikasi
+//menentukan ada screen apa aja
+//dan bagaimana cara berpindah dari satu screen ke screen lainnya
+
 @Composable
 fun AppNavigation() {
     val navController = rememberNavController()
@@ -36,7 +40,9 @@ fun AppNavigation() {
     val userRepository = PenyediaViewModel.provideUserRepository(context)
     val coroutineScope = rememberCoroutineScope()
 
-    // Initialize admin user saat aplikasi pertama kali di-launch
+
+    //Menjalankan proses pengecekan & pembuatan user admin SATU KALI
+    //saat aplikasi pertama kali dibuka
     LaunchedEffect(Unit) {
         coroutineScope.launch {
             try {
@@ -48,11 +54,15 @@ fun AppNavigation() {
     }
 
 
+    //wadah semua screen
     NavHost(
         navController = navController,
-        startDestination = "login"
+        startDestination = "login" //ketika di run aplikasi, screen pertama yang muncul adalah login screen
     ) {
 
+        //definisi tiap screen dan cara navigasinya
+        //kalau admin login, navigasi ke admin dashboard
+        //kalau user biasa login, navigasi ke user dashboard
         composable("login") {
             LoginScreen(
                 authViewModel = authViewModel,
@@ -73,6 +83,8 @@ fun AppNavigation() {
             )
         }
 
+        //Menampilkan halaman REGISTER (daftar akun)
+        //dan mengatur aksi ketika user ingin kembali ke halaman LOGIN
         composable("register") {
             RegisterScreen(
                 authViewModel = authViewModel,
@@ -82,6 +94,8 @@ fun AppNavigation() {
             )
         }
 
+        //Menampilkan halaman dashboard ADMIN dan mengatur aksi navigasi admin
+        //(kelola film, lihat laporan, dan logout)
         composable("admin_dashboard") {
             AdminDashboardScreen(
                 onKelolaFilm = {
@@ -100,6 +114,8 @@ fun AppNavigation() {
 
             )
         }
+
+        //Menampilkan halaman detail film untuk USER
         composable(
             route = "user_film_detail/{filmId}", // Buat route unik
             arguments = listOf(navArgument("filmId") { type = NavType.IntType })
@@ -112,8 +128,7 @@ fun AppNavigation() {
             )
         }
 
-
-
+        //Menampilkan halaman kelola film khusus ADMIN
         composable("kelola_film") {
             FilmListAdminScreen(
                 viewModel = filmViewModel,
@@ -124,6 +139,8 @@ fun AppNavigation() {
                 onBack = { navController.popBackStack() }
             )
         }
+
+        //Menampilkan halaman detail film untuk ADMIN
         composable(
             route = "admin_film_detail/{filmId}", // Buat route unik
             arguments = listOf(navArgument("filmId") { type = NavType.IntType })
@@ -137,17 +154,21 @@ fun AppNavigation() {
                 onDeleteConfirm = { navController.popBackStack() }
             )
         }
+
+        //Menampilkan halaman edit film untuk ADMIN
         composable(
             route = "edit_film/{filmId}",
             arguments = listOf(navArgument("filmId") { type = NavType.IntType })
         ) { backStackEntry ->
             val filmId = backStackEntry.arguments?.getInt("filmId") ?: 0
+
             // Ambil data film dari StateFlow untuk di-pass ke EditFilmScreen
             val film by filmViewModel.getFilmById(filmId).collectAsState(initial = null)
             EditFilmScreen(
                 film = film,
                 onSave = { updatedFilm ->
                     filmViewModel.updateFilm(updatedFilm)
+
                     // Kembali ke detail screen setelah update
                     navController.popBackStack()
                 },
@@ -155,6 +176,7 @@ fun AppNavigation() {
             )
         }
 
+        //Menampilkan halaman tambah film untuk ADMIN
         composable("add_film?filmId={filmId}") { backStackEntry ->
             val filmId =
                 backStackEntry.arguments?.getString("filmId")?.toIntOrNull()
@@ -171,6 +193,7 @@ fun AppNavigation() {
             )
         }
 
+        //Menampilkan halaman laporan untuk ADMIN
         composable("report") {
             val reportViewModel =
                 PenyediaViewModel.provideReportViewModel(context)
@@ -184,6 +207,7 @@ fun AppNavigation() {
         }
 
 
+        //Menampilkan halaman dashboard USER dan mengatur aksi navigasi user (lihat detail film & logout)
         composable("user_dashboard") {
             UserDashboardScreen(
                 viewModel = filmViewModel,

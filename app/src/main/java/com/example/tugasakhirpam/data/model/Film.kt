@@ -3,6 +3,8 @@ package com.example.tugasakhirpam.data.model
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
+//table film untuk menyimpan data film
+//beserta isi column nya
 @Entity(tableName = "film")
 data class Film(
     @PrimaryKey(autoGenerate = true)

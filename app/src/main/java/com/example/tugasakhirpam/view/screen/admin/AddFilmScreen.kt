@@ -91,6 +91,7 @@ fun AddFilmScreen(
     ) { uri: Uri? ->
         uri?.let {
             posterUri = it
+
             // Simpan foto ke internal storage
             posterPath = savePosterImage(context, it)
         }

@@ -12,11 +12,7 @@ import com.example.tugasakhirpam.ui.theme.TugasAkhirPAMTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // Aktifkan edge-to-edge display
         enableEdgeToEdge()
-
-        // Set content dengan rendering optimized
         setContent {
             AppNavigation()
         }

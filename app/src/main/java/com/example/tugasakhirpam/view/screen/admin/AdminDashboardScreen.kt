@@ -42,7 +42,7 @@ fun AdminDashboardScreen(
     onLogout: () -> Unit
 ) {
     Scaffold(
-        containerColor = Color(0xFF4F5F59), // 🔥 background ijo
+        containerColor = Color(0xFF4F5F59), // warna background ijo
         topBar = {
             AppTopBar(
                 title = "Halo, Admin",
@@ -69,7 +69,7 @@ fun AdminDashboardScreen(
 
             Spacer(modifier = Modifier.height(12.dp))
 
-            // 📦 CARD: KELOLA FILM
+            //CARD: KELOLA FILM
             Card(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -120,7 +120,7 @@ fun AdminDashboardScreen(
                 }
             }
 
-            // 📦 CARD: LAPORAN
+            // CARD: LAPORAN
             Card(
                 modifier = Modifier
                     .fillMaxWidth()

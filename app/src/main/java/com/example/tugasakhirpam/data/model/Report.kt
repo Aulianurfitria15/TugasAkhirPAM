@@ -5,3 +5,5 @@ data class Report(
     val total: Int
 )
 
+//untuk menampung/menampilkan data laporan jumlah
+// film berdasarkan kategori

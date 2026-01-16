@@ -45,7 +45,7 @@ fun ReportScreen(
     val top3Genre by viewModel.top3Genre.collectAsState()
 
     Scaffold(
-        containerColor = Color(0xFF4F5F59), // 🔥 background utama
+        containerColor = Color(0xFF4F5F59), // background utama
         topBar = {
             TopAppBar(
                 title = { Text("Laporan", color = Color.White) },
@@ -84,19 +84,19 @@ fun ReportScreen(
             ReportCard(
                 title = "Total Film",
                 value = total.toString(),
-                backgroundColor = Color(0xFFB8484E) // 🔥 merah
+                backgroundColor = Color(0xFFB8484E) // merah
             )
 
             ReportCard(
                 title = "Genre Terbanyak",
                 value = if (topGenre.isBlank()) "-" else topGenre,
-                backgroundColor = Color(0xFFB8484E) // 🔥 merah
+                backgroundColor = Color(0xFFB8484E) // merah
             )
 
             ReportCard(
                 title = "Rating Tertinggi",
                 value = topRating.toString(),
-                backgroundColor = Color(0xFFB8484E) // 🔥 merah
+                backgroundColor = Color(0xFFB8484E) // merah
             )
 
             Spacer(modifier = Modifier.height(24.dp))
@@ -145,7 +145,6 @@ fun ReportScreen(
                     }
                 }
             }
-
         }
     }
 }

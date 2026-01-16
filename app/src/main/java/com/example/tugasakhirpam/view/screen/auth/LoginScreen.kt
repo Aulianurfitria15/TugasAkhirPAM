@@ -67,7 +67,7 @@ fun LoginScreen(
 
         Spacer(modifier = Modifier.height(64.dp))
 
-        // 🔺 LOGO (GANTI DENGAN IMAGE JIKA ADA)
+        // LOGO (pake icon karna ga dapet logo aslinya)
         Icon(
             imageVector = Icons.Default.Movie,
             contentDescription = null,
@@ -91,7 +91,7 @@ fun LoginScreen(
 
         Spacer(modifier = Modifier.height(48.dp))
 
-        // 🔹 USERNAME
+        // USERNAME
         OutlinedTextField(
             value = username,
             onValueChange = { username = it },
@@ -110,7 +110,7 @@ fun LoginScreen(
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // 🔹 PASSWORD
+        //PASSWORD
         OutlinedTextField(
             value = password,
             onValueChange = { password = it },
@@ -130,7 +130,7 @@ fun LoginScreen(
 
         Spacer(modifier = Modifier.height(32.dp))
 
-        // 🔴 BUTTON MASUK
+        //BUTTON MASUK
         Button(
             onClick = {
                 authViewModel.login(username, password)
@@ -148,7 +148,7 @@ fun LoginScreen(
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        // 🔸 REGISTER
+        //REGISTER
         Row {
             Text(
                 text = "Belum punya akun? ",

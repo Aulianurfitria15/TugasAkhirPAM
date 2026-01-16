@@ -18,19 +18,19 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun ReportCard(
-    title: String,
-    value: String,
+fun ReportCard( //Menampilkan 1 informasi laporan / statistik dalam bentuk kartu
+    title: String, //parameter judul kartu
+    value: String, //parameter nisi/nilai kartu
     backgroundColor: Color = Color(0xFF8B7D6B), // default coklat
-    textColor: Color = Color.White
+    textColor: Color = Color.White // default putih
 ) {
-    Box(
+    Box( //wadah kotak untuk kartu laporan
         modifier = Modifier
-            .fillMaxWidth()
-            .background(backgroundColor, RoundedCornerShape(12.dp))
-            .padding(16.dp)
+            .fillMaxWidth() //mengisi lebar penuh
+            .background(backgroundColor, RoundedCornerShape(12.dp)) //latar belakang dengan warna dan sudut membulat
+            .padding(16.dp) //jarak isi ke tepi
     ) {
-        Column {
+        Column { //menyusun teks secara vertikal
             Text(
                 text = title,
                 color = textColor,

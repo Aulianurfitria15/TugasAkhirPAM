@@ -92,7 +92,7 @@ fun EditFilmScreen(
                 modifier = Modifier
                     .padding(padding)
                     .padding(16.dp),
-                verticalArrangement = Arrangement.spacedBy(12.dp) // 🔥 biar rapi
+                verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
 
                 // 🎬 POSTER - Upload Box
@@ -106,6 +106,7 @@ fun EditFilmScreen(
                     contentAlignment = Alignment.Center
                 ) {
                     if (posterUri != null) {
+
                         // Tampilkan preview gambar baru
                         Image(
                             painter = rememberAsyncImagePainter(posterUri),
@@ -114,6 +115,7 @@ fun EditFilmScreen(
                             contentScale = ContentScale.Crop
                         )
                     } else if (posterPath.isNotEmpty()) {
+
                         // Tampilkan poster lama jika tidak ada upload baru
                         Image(
                             painter = rememberAsyncImagePainter(posterPath),
@@ -122,6 +124,7 @@ fun EditFilmScreen(
                             contentScale = ContentScale.Crop
                         )
                     } else {
+
                         // Tampilkan icon kamera jika belum ada gambar
                         Column(
                             horizontalAlignment = Alignment.CenterHorizontally,
@@ -143,7 +146,7 @@ fun EditFilmScreen(
                     }
                 }
 
-                // 🎞 JUDUL
+                // JUDUL
                 OutlinedTextField(
                     value = title,
                     onValueChange = { title = it },
@@ -155,7 +158,7 @@ fun EditFilmScreen(
                     shape = RoundedCornerShape(50)
                 )
 
-                // 🏷 GENRE
+                // GENRE
                 OutlinedTextField(
                     value = genre,
                     onValueChange = { genre = it },
@@ -167,7 +170,7 @@ fun EditFilmScreen(
                     shape = RoundedCornerShape(50)
                 )
 
-                // 📅 TAHUN
+                // TAHUN
                 OutlinedTextField(
                     value = year,
                     onValueChange = { year = it },
@@ -179,7 +182,7 @@ fun EditFilmScreen(
                     shape = RoundedCornerShape(50)
                 )
 
-                // ⭐ RATING
+                // RATING
                 OutlinedTextField(
                     value = rating,
                     onValueChange = { rating = it },
@@ -191,7 +194,7 @@ fun EditFilmScreen(
                     shape = RoundedCornerShape(50)
                 )
 
-                // 📝 DESKRIPSI
+                // DESKRIPSI
                 OutlinedTextField(
                     value = description,
                     onValueChange = { description = it },
@@ -205,18 +208,18 @@ fun EditFilmScreen(
 
                 Spacer(modifier = Modifier.height(24.dp))
 
-                // 🔴 BUTTON UPDATE
+                // BUTTON UPDATE
                 Button(
                     onClick = {
                         onSave(
                             Film(
-                                id = existingFilm.id, // 🔥 PENTING
+                                id = existingFilm.id,
                                 title = title,
                                 genre = genre,
                                 year = year.toIntOrNull() ?: 0,
                                 rating = rating.toDoubleOrNull() ?: 0.0,
                                 description = description,
-                                poster = posterPath // 🔥 Gunakan posterPath yang sudah di-update
+                                poster = posterPath //Gunakan posterPath yang sudah di-update
                             )
                         )
                     },

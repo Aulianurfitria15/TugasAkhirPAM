@@ -19,6 +19,7 @@ fun AppTopBar(
     onBack: (() -> Unit)? = null,
     onLogout: (() -> Unit)? = null
 ) {
+    //menampilkan judul halaman
     TopAppBar(
         title = {
             Text(
@@ -27,6 +28,9 @@ fun AppTopBar(
             )
         },
 
+        //menampiljan icon back
+        //jika onBack tidak null maka icon back akan ditampilkan: detail screen
+        //jika onBack null maka icon back tidak ditampilkan: dashboard screen
                 navigationIcon = {
             if (onBack != null) {
                 IconButton(onClick = onBack) {
@@ -43,6 +47,9 @@ fun AppTopBar(
             containerColor = Color(0xFF4F5F59)
         ),
 
+        //menampilkan icon logout
+        //jika onLogout tidak null maka icon logout akan ditampilkan: dashboard screen
+        //jika onLogout null maka icon logout tidak ditampilkan: detail screen
         actions = {
             if (onLogout != null) {
                 IconButton(onClick = onLogout) {
@@ -51,7 +58,6 @@ fun AppTopBar(
                         contentDescription = "Logout",
                         tint = Color.White
                     )
-
                 }
             }
         }

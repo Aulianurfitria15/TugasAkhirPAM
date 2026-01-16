@@ -56,7 +56,7 @@ fun FilmListAdminScreen(
     }
 
     Scaffold(
-        containerColor = Color(0xFF4F5F59), // 🌿 background hijau
+        containerColor = Color(0xFF4F5F59), // background hijau
         topBar = {
             AppTopBar(
                 title = "Kelola Film",
@@ -66,7 +66,7 @@ fun FilmListAdminScreen(
         floatingActionButton = {
             FloatingActionButton(
                 onClick = onAddClick,
-                containerColor = Color(0xFFB8484E), // 🔴 merah
+                containerColor = Color(0xFFB8484E), // merah
                 contentColor = Color.White
             ) {
                 Icon(Icons.Default.Add, contentDescription = "Tambah Film")
@@ -79,7 +79,7 @@ fun FilmListAdminScreen(
                 .padding(16.dp)
         ) {
 
-            // 🔍 SEARCH
+            // SEARCH
             OutlinedTextField(
                 value = keyword,
                 onValueChange = { keyword = it },
@@ -106,7 +106,7 @@ fun FilmListAdminScreen(
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            // 🎬 LIST FILM
+            // LIST FILM
             LazyColumn(
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {

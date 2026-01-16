@@ -19,52 +19,60 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.example.tugasakhirpam.data.model.Film
 
+
+//Menampilkan 1 data film dalam bentuk kartu (card)
 @Composable
 fun FilmCard(
     film: Film,
     onClick: () -> Unit
 ) {
+
+    //untuk mengatur tampilan card film
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp)
-            .clickable(onClick = onClick),
+            .clickable(onClick = onClick), //pindah ke detail film saat diklik
         elevation = CardDefaults.cardElevation(4.dp)
     ) {
         Column {
-            Box(
+            Box( //wadah untuk poster film
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(200.dp)
                     .background(Color.LightGray)
             ) {
+                //mengambil dan menampilkan poster film
                 AsyncImage(
                     model = film.poster,
                     contentDescription = film.title,
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(200.dp),
-                    contentScale = ContentScale.Crop
+                    contentScale = ContentScale.Crop //menyesuaikan ukuran gambar
                 )
             }
 
             Column(modifier = Modifier.padding(12.dp)) {
-                Text(
+                Text( //JUDUL FILM
                     film.title,
                     fontWeight = FontWeight.Bold,
                     color = Color.Black
                 )
 
-                Text(
+                Text( //GENRE FILM
                     "Genre: ${film.genre}",
                     color = Color.DarkGray
                 )
 
-                Text(
+                Text( //RATING FILM
                     "Rating: ${film.rating}",
                     color = Color(0xFFB8484E),
                     fontWeight = FontWeight.SemiBold
                 )
+                //“Deskripsi dan tahun tidak muncul karena di FilmCard
+            // tidak ada komponen Text yang menampilkan field tersebut,
+            // meskipun datanya ada di database.”
 
             }
         }
